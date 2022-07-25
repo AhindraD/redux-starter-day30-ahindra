@@ -1,18 +1,25 @@
-import { Provider } from "react-redux";
+
 import Login from "./components/Login";
 import Profile from "./components/Profile";
-import store from "./store";
+
+import { useSelector } from 'react-redux/es/exports';
+import { useDispatch } from 'react-redux/es/hooks/useDispatch';
+import { toggleTheme } from './slices/themeSlice';
 
 function App() {
+  let { theme } = useSelector(state => state.theme);
+  const dispatch = useDispatch();
   return (
-    <Provider store={store}>
-      <div className="container">
-        <div className="app">
-          <Profile />
-          <Login />
-        </div>
+    <div className={"container " + theme}>
+      <div className="app">
+        <Profile />
+        <Login />
+        <button className='toggle-bttn' onClick={() => {
+          dispatch(toggleTheme());
+        }}> Theme : {theme}
+        </button>
       </div>
-    </Provider>
+    </div >
   );
 }
 
