@@ -4,17 +4,19 @@ const userSlice = createSlice({
     name: 'user-info',
     initialState: {
         user: {
-            name: 'ad',
-            email: 'ad@mail.com',
+            name: 'AhindraD',
+            email: 'ahindra@mail.com',
             location: 'India',
         }
     },
     reducers: {
         login: (state, action) => {
+            console.log('login called');
             state.user = action.payload;
         },
         logout: (state, action) => {
             console.log('logout called');
+            state.user = {};
         }
     }
 })
