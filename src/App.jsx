@@ -1,15 +1,18 @@
+import { Provider } from "react-redux";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
-
+import store from "./store";
 
 function App() {
   return (
-    <div className="container">
-      <div className="app">
-        <Profile />
-        <Login />
+    <Provider store={store}>
+      <div className="container">
+        <div className="app">
+          <Profile />
+          <Login />
+        </div>
       </div>
-    </div>
+    </Provider>
   );
 }
 
